@@ -2,19 +2,22 @@
 
 [English](readme.md)
 
-Zeigt, wie `atan2()` funktioniert: Der Winkel von der Mitte der
-Zeichenfläche zur Maus wird berechnet und dreht drei Kreuze. Der Winkel wird
-in Grad angezeigt. Ein Ausgangspunkt für alles, was sich zu einem Punkt hin
+Zeigt, wie `atan2()` funktioniert: Für jedes der drei Kreuze wird der
+Winkel vom Kreuz zur Maus berechnet und das Kreuz damit gedreht, sodass alle
+drei auf die Maus zeigen. Der Winkel des mittleren Kreuzes wird in Grad
+angezeigt. Ein Ausgangspunkt für alles, was sich zu einem Punkt hin
 drehen soll, etwa Augen, Pfeile oder Geschütze.
 
 ## Installation
 
+Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
+nicht verwendet).
+
+## Ausführen
+
 1. Den Ordner in Visual Studio Code öffnen und Live Server starten (in der
    Statusleiste auf **Go Live** klicken).
 2. Die Maus über die Zeichenfläche bewegen.
-
-Bibliotheken (in `libraries/`): p5.js 1.10.0, p5.sound 1.0.1 (eingebunden,
-nicht verwendet).
 
 ## Coding-Hilfe
 
@@ -24,9 +27,8 @@ nicht verwendet).
   auf `angleMode(DEGREES)` um, damit `atan2()` Grad statt Bogenmass
   liefert.
 - **`draw()`**: berechnet `angle = atan2(mouseY - center.y, mouseX -
-  center.x)` einmal von der Mitte aus. Jedes Kreuz wird innerhalb von
+  center.x)` von der Mitte aus und ebenso `angleLeft` und `angleRight` von
+  den Positionen der beiden anderen Kreuze. Jedes Kreuz wird innerhalb von
   `push()` / `pop()` mit `translate()` an seine Position verschoben und mit
-  `rotate(angle)` gedreht. Weil alle drei denselben Winkel verwenden, zeigt
-  nur das grüne Kreuz in der Mitte genau auf die Maus. Damit jedes Kreuz
-  selbst auf die Maus zielt, `atan2()` von seiner eigenen Position aus
-  berechnen.
+  `rotate()` um seinen eigenen Winkel gedreht, sodass jedes Kreuz auf die
+  Maus zeigt.

@@ -22,18 +22,23 @@ function draw() {
   pop()
 
   // Same but on the left side
+  // Each cross needs its own angle, computed from its own position
+  const left = createVector(center.x / 2, center.y)
+  const angleLeft = atan2(mouseY - left.y, mouseX - left.x);
   push()
-    translate(center.x / 2, center.y);  
-    rotate(angle);
+    translate(left.x, left.y);  
+    rotate(angleLeft);
     fill('red');
     rect(- (boxWidth / 2), - (boxHeight / 2), boxWidth, boxHeight);
     rect(- (boxHeight / 2), - (boxWidth / 2), boxHeight, boxWidth);
   pop()
 
   // Same but on the right side
+  const right = createVector(center.x * 1.5, center.y)
+  const angleRight = atan2(mouseY - right.y, mouseX - right.x);
   push()
-    translate(center.x * 1.5, center.y);  
-    rotate(angle);
+    translate(right.x, right.y);  
+    rotate(angleRight);
     fill('blue');
     rect(- (boxWidth / 2), - (boxHeight / 2), boxWidth, boxHeight);
     rect(- (boxHeight / 2), - (boxWidth / 2), boxHeight, boxWidth);
